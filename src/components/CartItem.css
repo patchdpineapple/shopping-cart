@@ -1,0 +1,26 @@
+.CartItem {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: 80%;
+    margin: 5px;
+}
+
+.CartItem > * {
+    margin: 10px;
+}
+
+.cart-product-image {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(204, 204, 204);
+
+}
+
+.CartItem >  input {
+    width: 40px;
+}

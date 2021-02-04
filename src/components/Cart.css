@@ -1,0 +1,33 @@
+.Cart {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.cart-page-header {
+    width: 90%;
+    margin-bottom: 10px;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.cart-items-container {
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+}
+
+.checkout-container {
+    display:flex;
+    flex-flow: column;
+    justify-content: space-between;
+    margin-top: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    height: 90px;
+    
+}
