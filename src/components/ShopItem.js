@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState }  from "react";
 import "./ShopItem.css";
+import AddToCart from "./AddToCart";
 
-function ShopItem({ product, toggleShowAdd, specifyAddItem }) {
+
+function ShopItem({ product }) {
+  const [showAdd, setShowAdd] = useState(false);
+
+  const toggleShowAdd = () => {
+    setShowAdd(!showAdd);
+  };
   return (
     <>
       <div
         className="ShopItem"
         onClick={(product) => {
           toggleShowAdd();
-          specifyAddItem(product);
         }}
       >
         <img
@@ -19,6 +25,11 @@ function ShopItem({ product, toggleShowAdd, specifyAddItem }) {
         <strong>{product.name}</strong>
         <p>{`$${product.price}`}</p>
       </div>
+      {showAdd ? (
+        
+        <AddToCart item={product} toggleShowAdd={toggleShowAdd}/>
+      
+    ) : null}
     </>
   );
 }

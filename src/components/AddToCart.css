@@ -19,13 +19,13 @@
 .add-product-image {
     width: 100px;
     height: 100px;
-    background-color: rgb(204, 204, 204);
+    background-color: rgb(255, 255, 255);
 
 }
 
 .AddToCart input {
     width: 40px;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .add-cart-dimmer {

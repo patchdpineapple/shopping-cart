@@ -1,20 +1,8 @@
 import React, { useState } from "react";
 import "./Shop.css";
 import ShopItem from "./ShopItem";
-import AddToCart from "./AddToCart";
 
 function Shop({ products }) {
-  const [showAdd, setShowAdd] = useState(false);
-  const [addItem, setAddItem] = useState({});
-
-  const toggleShowAdd = () => {
-    setShowAdd(!showAdd);
-  };
-
-  const specifyAddItem = (item) => {
-    setAddItem(item);
-  };
-
   return (
     <>
       <div className="Shop">
@@ -23,22 +11,10 @@ function Shop({ products }) {
         </div>
         <div className="products-container">
           {products.map((product) => {
-            return (
-              <ShopItem
-                key={product.id}
-                product={product}
-                toggleShowAdd={toggleShowAdd}
-                specifyAddItem={specifyAddItem}
-              />
-            );
+            return <ShopItem key={product.id} product={product} />;
           })}
         </div>
       </div>
-      {showAdd ? (
-        
-          <AddToCart item={addItem} toggleShowAdd={toggleShowAdd}/>
-        
-      ) : null}
     </>
   );
 }
