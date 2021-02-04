@@ -18,11 +18,6 @@ a {
   text-decoration: none;
 }
 
-button {
-  border:none;
-  background-color: none;
-}
-
 .btn {
   display: inline-block;
   background: #000;

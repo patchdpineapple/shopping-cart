@@ -35,9 +35,9 @@ function Shop({ products }) {
         </div>
       </div>
       {showAdd ? (
-        <div className="add-cart-dimmer">
-          <AddToCart item={addItem} />
-        </div>
+        
+          <AddToCart item={addItem} toggleShowAdd={toggleShowAdd}/>
+        
       ) : null}
     </>
   );

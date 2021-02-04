@@ -16,7 +16,7 @@ function ShopItem({ product, toggleShowAdd, specifyAddItem }) {
           className="shop-product-image"
           alt="product"
         ></img>
-        <p>{product.name}</p>
+        <strong>{product.name}</strong>
         <p>{`$${product.price}`}</p>
       </div>
     </>

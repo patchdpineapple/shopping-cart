@@ -7,13 +7,16 @@
     border-radius: 5px;
     padding: 10px;
     width: 200px;
-    height: 200px;
+    height: 250px;
     margin: 10px;
+}
+
+.ShopItem p {
+    color: rgb(43, 43, 43);
 }
 
 .shop-product-image {
     width: 150px;
-    height: 150px;
-    background-color: rgb(204, 204, 204);
+    background-color: rgb(255, 255, 255);
     margin-bottom: 10px;
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./CartItem.css";
 
 function CartItem({ item, onUpdatePrice }) {
-  const [newItem, setNewItem] = useState({});
+  const [newItem, setNewItem] = useState(item);
 
   const handleChangeQuantity = (e) => {
     const { value } = e.target;
@@ -11,9 +11,7 @@ function CartItem({ item, onUpdatePrice }) {
     onUpdatePrice(newItem);
   };
 
-  useEffect(() => {
-    setNewItem(item);
-  }, [item]);
+ 
 
  
 
