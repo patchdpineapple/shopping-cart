@@ -17,20 +17,33 @@ function App() {
   const handleAddToCart = (additem) => {
     
     let tempitems = cartItems;
-    let index = tempitems.findIndex((item) => item.id === additem.id);
+    const index = tempitems.findIndex((item) => item.id === additem.id);
     if (index === -1) {
       setCartItems([...tempitems, additem ] );
+
     } else {
-      console.log(typeof tempitems[index].quantity);
       tempitems[index].quantity = tempitems[index].quantity + additem.quantity;
       tempitems[index].total = tempitems[index].total + additem.total;
       setCartItems(tempitems);
+
     }
+  };
+
+  //this method updates the quantity and total price of cart items
+  const handleModifyCart = (updatedItem) => {
+    
+    let tempitems = cartItems;
+    const index = tempitems.findIndex((item) => item.id === updatedItem.id);
+    tempitems[index].quantity = updatedItem.quantity;
+    tempitems[index].total = updatedItem.total;
+    setCartItems(tempitems);
+    
+    console.log('cart item modified');
   };
 
   return (
     <Router>
-      <div className="App">
+      <div className="App">{console.log('add', cartItems)}
         <Navlinks />
         <Switch>
           <Route exact path="/" component={Home} />
@@ -43,7 +56,7 @@ function App() {
           <Route
             path="/cart"
             component={() => (
-              <Cart cartItems={cartItems} handleAddToCart={handleAddToCart} />
+              <Cart cartItems={cartItems} handleAddToCart={handleAddToCart} handleModifyCart={handleModifyCart} />
             )}
           />
         </Switch>
