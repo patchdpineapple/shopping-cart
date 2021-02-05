@@ -2,57 +2,33 @@ import React, { useState, useEffect } from "react";
 import CartItem from "./CartItem";
 import "./Cart.css";
 
-function Cart() {
-  const [sampleItems, setSampleItems] = useState([
-    {
-      id: 1,
-      name: "sample",
-      description: "",
-      price: 250.53,
-      image: "#",
-      quantity: 1,
-      total: 250.53,
-    },
-    {
-      id: 2,
-      name: "sample2",
-      description: "",
-      price: 250.25,
-      image: "#",
-      quantity: 1,
-      total: 250.25,
-    },
-    {
-      id: 3,
-      name: "sample3",
-      description: "",
-      price: 250.99,
-      image: "#",
-      quantity: 1,
-      total: 250.99,
-    },
-  ]);
-  const [cartItems, setCartItems] = useState([]);
+function Cart(props) {
+  /*****STATES*****/
+  const [cartItems, setCartItems] = useState(props.cartItems);
+  const [total, setTotal] = useState(0);
 
+/*****METHODS*****/
+//this method replaces an item with a new item that has its price and quantity updated
   const handleUpdatePrice = (updatedItem) => {
-    const tempitems = sampleItems.map((sampleItem) => {
-      if (sampleItem.id === updatedItem.id) {
+    const tempitems = cartItems.map((item) => {
+      if (item.id === updatedItem.id) {
         return updatedItem;
       }
-      return sampleItem;
+      return item;
     });
-    setSampleItems(tempitems);
+    setCartItems(tempitems);
   };
 
+  /*****LIFECYCLE METHODS*****/
   //update total everytime cartItems' state is changed
-  const [total, setTotal] = useState(0);
   useEffect(() => {
+    console.log(cartItems);
     let temptotal = 0;
-    for (let i = 0; i < sampleItems.length; i++) {
-      temptotal = temptotal + sampleItems[i].total;
+    for (let i = 0; i < cartItems.length; i++) {
+      temptotal = temptotal + cartItems[i].total;
     }
     setTotal(temptotal.toFixed(2));
-  }, [sampleItems]);
+  }, [cartItems]);
 
   return (
     <div className="Cart">
@@ -60,7 +36,7 @@ function Cart() {
         <h3>Your Cart</h3>
       </div>
       <div className="cart-items-container">
-        {sampleItems.map((item) => {
+        {cartItems.map((item) => {
           return (
             <CartItem
               key={item.id}

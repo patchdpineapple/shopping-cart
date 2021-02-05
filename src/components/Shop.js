@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Shop.css";
 import ShopItem from "./ShopItem";
 
-function Shop({ products }) {
+function Shop({ products, handleAddToCart }) {
   return (
     <>
       <div className="Shop">
@@ -11,7 +11,7 @@ function Shop({ products }) {
         </div>
         <div className="products-container">
           {products.map((product) => {
-            return <ShopItem key={product.id} product={product} />;
+            return <ShopItem key={product.id} product={product} handleAddToCart={handleAddToCart}/>;
           })}
         </div>
       </div>

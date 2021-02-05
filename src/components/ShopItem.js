@@ -3,7 +3,7 @@ import "./ShopItem.css";
 import AddToCart from "./AddToCart";
 
 
-function ShopItem({ product }) {
+function ShopItem({ product, handleAddToCart }) {
   const [showAdd, setShowAdd] = useState(false);
 
   const toggleShowAdd = () => {
@@ -27,7 +27,7 @@ function ShopItem({ product }) {
       </div>
       {showAdd ? (
         
-        <AddToCart item={product} toggleShowAdd={toggleShowAdd}/>
+        <AddToCart item={product} toggleShowAdd={toggleShowAdd} handleAddToCart={handleAddToCart}/>
       
     ) : null}
     </>
