@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CartItem from "./CartItem";
 import "./Cart.css";
+import Checkout from './Checkout';
 
 function Cart({
   cartItems,
@@ -11,6 +12,11 @@ function Cart({
 }) {
   /*****STATES*****/
   const [cartTotal, setCartTotal] = useState(total);
+  const [showCheckout, setShowCheckout] = useState(false);
+
+const toggleCheckout = () => {
+  setShowCheckout(!showCheckout);
+}
 
   return (
     <div className="Cart">
@@ -39,9 +45,14 @@ function Cart({
       {cartItems.length > 0 ? (
         <div className="checkout-container">
           <h3>TOTAL: {`$${cartTotal}`}</h3>
-          <button className="btn">CHECKOUT</button>
+          <button className="btn" onClick={() => {
+            toggleCheckout();
+          }}>CHECKOUT</button>
         </div>
       ) : null}
+      {showCheckout ? (
+        <Checkout toggleCheckout={toggleCheckout} />
+      ) : null }
     </div>
   );
 }

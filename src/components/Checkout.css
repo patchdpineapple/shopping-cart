@@ -1,0 +1,29 @@
+.Checkout {
+    display:flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 300px;
+    border: 1px solid black;
+    z-index: 11;
+    background-color: white;
+}
+
+.Checkout > div {
+    margin-bottom: 40px;
+}
+
+
+.checkout-dimmer {
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.623);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
