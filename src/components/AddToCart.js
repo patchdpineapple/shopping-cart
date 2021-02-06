@@ -13,13 +13,12 @@ function AddToCart({ item, toggleShowAdd, handleAddToCart }) {
     const { value } = e.target;
     setQuantity(Number(value));
     setTotal(Number((addItem.price * value).toFixed(2)));
-    console.log(quantity);
   };
 
   //this method puts a quantity and total price property to the item and adds it to cart
   const onAddToCart = () => {
     toggleShowAdd();
-    const tempitem = { ...addItem, quantity: quantity, total: total };
+    const tempitem = { ...addItem, quantity: quantity, total: Number(total) };
     setAddItem(tempitem);
     handleAddToCart(tempitem);
   };
@@ -56,7 +55,5 @@ function AddToCart({ item, toggleShowAdd, handleAddToCart }) {
     </div>
   );
 }
-
-
 
 export default AddToCart;

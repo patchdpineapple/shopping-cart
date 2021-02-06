@@ -1,7 +1,6 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import "./ShopItem.css";
 import AddToCart from "./AddToCart";
-
 
 function ShopItem({ product, handleAddToCart }) {
   const [showAdd, setShowAdd] = useState(false);
@@ -26,10 +25,12 @@ function ShopItem({ product, handleAddToCart }) {
         <p>{`$${product.price}`}</p>
       </div>
       {showAdd ? (
-        
-        <AddToCart item={product} toggleShowAdd={toggleShowAdd} handleAddToCart={handleAddToCart}/>
-      
-    ) : null}
+        <AddToCart
+          item={product}
+          toggleShowAdd={toggleShowAdd}
+          handleAddToCart={handleAddToCart}
+        />
+      ) : null}
     </>
   );
 }

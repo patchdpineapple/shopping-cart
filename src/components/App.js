@@ -11,39 +11,43 @@ function App() {
   /*****STATES*****/
   const [products, setProducts] = useState(productsList);
   const [cartItems, setCartItems] = useState([]);
+  const [total, setTotal] = useState(0);
 
   /*****METHODS*****/
   //this method adds a new item to the cart or overwrite a current item
   const handleAddToCart = (additem) => {
-    
     let tempitems = cartItems;
     const index = tempitems.findIndex((item) => item.id === additem.id);
     if (index === -1) {
-      setCartItems([...tempitems, additem ] );
-
+      setCartItems([...tempitems, additem]);
     } else {
       tempitems[index].quantity = tempitems[index].quantity + additem.quantity;
-      tempitems[index].total = tempitems[index].total + additem.total;
+      tempitems[index].total =
+        tempitems[index].quantity * tempitems[index].price;
       setCartItems(tempitems);
-
     }
   };
 
   //this method updates the quantity and total price of cart items
   const handleModifyCart = (updatedItem) => {
-    
     let tempitems = cartItems;
     const index = tempitems.findIndex((item) => item.id === updatedItem.id);
     tempitems[index].quantity = updatedItem.quantity;
     tempitems[index].total = updatedItem.total;
     setCartItems(tempitems);
-    
-    console.log('cart item modified');
+  };
+
+  //this methods updates the total of all items once the quantity is adjusted
+  const handleUpdateTotal = () => {
+    let temptotal = cartItems.reduce((total, item) => {
+      return total + item.total;
+    }, 0);
+    setTotal(Number(temptotal.toFixed(2)));
   };
 
   return (
     <Router>
-      <div className="App">{console.log('add', cartItems)}
+      <div className="App">
         <Navlinks />
         <Switch>
           <Route exact path="/" component={Home} />
@@ -56,7 +60,13 @@ function App() {
           <Route
             path="/cart"
             component={() => (
-              <Cart cartItems={cartItems} handleAddToCart={handleAddToCart} handleModifyCart={handleModifyCart} />
+              <Cart
+                cartItems={cartItems}
+                handleAddToCart={handleAddToCart}
+                handleModifyCart={handleModifyCart}
+                total={total}
+                handleUpdateTotal={handleUpdateTotal}
+              />
             )}
           />
         </Switch>

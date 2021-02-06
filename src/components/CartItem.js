@@ -1,41 +1,32 @@
 import React, { useState, useEffect } from "react";
 import "./CartItem.css";
 
-function CartItem({ item, handleModifyCart }) {
+function CartItem({
+  cartItems,
+  item,
+  handleModifyCart,
+  handleUpdateTotal,
+  total,
+}) {
   /*****STATES*****/
   const [quantity, setQuantity] = useState(item.quantity);
-  const [total, setTotal] = useState(item.total);
+  const [owntotal, setOwnTotal] = useState(item.total);
 
   /*****METHODS*****/
-  //this method calculates the new total price of an item based on quantity
-  // const handleChangeQuantity = (e) => {
-  //   const { value } = e.target;
-  //   const total = Number((newItem.price * value).toFixed(2));
-  //   setNewItem({ ...newItem, quantity: Number(value), total: total });
-  //   onUpdatePrice(newItem);
-  // };
-
+  //this method updates the quantity and total price of item when you change the quantity input field
   const onModifyCart = (e) => {
     const { value } = e.target;
     const temptotal = Number((item.price * value).toFixed(2));
-    console.log('value', Number(value), 'total', temptotal);
-    handleModifyCart({ ...item, quantity: Number(value), total: temptotal })
+    handleModifyCart({ ...item, quantity: Number(value), total: temptotal });
     setQuantity(Number(value));
-    setTotal(Number((item.price * value).toFixed(2)));
-    
+    setOwnTotal(Number((item.price * value).toFixed(2)));
   };
 
   /*****LIFECYCLE METHODS*****/
-
-  // useEffect(()=> {
-  //   setQuantity(item.quantity);
-  //   setTotal(item.total);
-  // },[]);
-
-  // useEffect(() => {
-  //   const tempitem = { ...item, quantity: quantity, total: total };
-  //   handleModifyCart(tempitem);
-  // }, []);
+  //update total whenever you change the quantity of cart item
+  useEffect(() => {
+    handleUpdateTotal();
+  });
 
   return (
     <div className="CartItem">
@@ -47,10 +38,10 @@ function CartItem({ item, handleModifyCart }) {
           name="quantity"
           type="number"
           min="1"
-          value={item.quantity}
+          value={quantity}
           onChange={(e) => onModifyCart(e)}
         />
-        <strong>{`$${item.total}`}</strong>
+        <strong>{`$${owntotal}`}</strong>
       </div>
       <button className="btn btn_remove">Remove</button>
     </div>
