@@ -18,6 +18,7 @@ function AddToCart({ item, toggleShowAdd, handleAddToCart }) {
   //this method puts a quantity and total price property to the item and adds it to cart
   const onAddToCart = () => {
     toggleShowAdd();
+    if (quantity === 0) return;
     const tempitem = { ...addItem, quantity: quantity, total: Number(total) };
     setAddItem(tempitem);
     handleAddToCart(tempitem);
