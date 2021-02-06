@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import CartItem from "./CartItem";
 import "./Cart.css";
 
-function Cart({ cartItems, handleModifyCart, total, handleUpdateTotal }) {
+function Cart({
+  cartItems,
+  handleModifyCart,
+  total,
+  handleUpdateTotal,
+  handleRemoveItem,
+}) {
   /*****STATES*****/
   const [cartTotal, setCartTotal] = useState(total);
 
@@ -25,8 +31,7 @@ function Cart({ cartItems, handleModifyCart, total, handleUpdateTotal }) {
               item={item}
               handleModifyCart={handleModifyCart}
               handleUpdateTotal={handleUpdateTotal}
-              cartItems={cartItems}
-              total={total}
+              handleRemoveItem={handleRemoveItem}
             />
           );
         })}

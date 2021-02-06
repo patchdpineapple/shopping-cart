@@ -45,6 +45,12 @@ function App() {
     setTotal(Number(temptotal.toFixed(2)));
   };
 
+  //this method removes the item from cart if it has a matching id
+  const handleRemoveItem = (removeitem) => {
+    let tempitems = cartItems.filter(item => item.id !== removeitem.id);
+    setCartItems(tempitems);
+  }
+
   return (
     <Router>
       <div className="App">
@@ -66,6 +72,7 @@ function App() {
                 handleModifyCart={handleModifyCart}
                 total={total}
                 handleUpdateTotal={handleUpdateTotal}
+                handleRemoveItem={handleRemoveItem}
               />
             )}
           />
