@@ -47,15 +47,16 @@ function App() {
 
   //this method removes the item from cart if it has a matching id
   const handleRemoveItem = (removeitem) => {
-    let tempitems = cartItems.filter(item => item.id !== removeitem.id);
+    let tempitems = cartItems.filter((item) => item.id !== removeitem.id);
     setCartItems(tempitems);
-  }
+  };
 
   return (
     <Router>
       <div className="App">
         <Navlinks />
         <Switch>
+          <Route path="/shopping-cart" component={Home} />
           <Route exact path="/" component={Home} />
           <Route
             path="/shop"

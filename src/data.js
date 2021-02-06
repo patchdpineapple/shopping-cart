@@ -1,4 +1,4 @@
-import headphone from './img/headphone.png';
+import headphone from './img/headphone.jpg';
 import mouse from './img/mouse.jpg';
 import keyboard from './img/keyboard.jpg';
 import laptop from './img/laptop.jpg';

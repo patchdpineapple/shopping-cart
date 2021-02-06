@@ -1,3 +1,35 @@
 .Home {
     height: 70vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Home h1 {
+    font-size: 100px;
+    margin-bottom: 60px;
+}
+
+.Home h2 {
+    font-size: 36px;
+    
+}
+
+.btn-start {
+    font-size: 20px;
+    color: white !important;
+}
+
+@media (max-width: 460px) {
+    .Home h1 {
+        font-size: 60px;
+        margin-bottom: 40px;
+    }
+    
+    .Home h2 {
+        font-size: 24px;
+        
+    }
+
 }
